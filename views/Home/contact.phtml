@@ -1,0 +1,33 @@
+<div>
+    <h1><?= $context->pageTitle; ?></h1>
+</div>
+
+<?php if(isset($context->errorMessage)) { ?>
+    <div style="color: red;">
+        <?= $context->errorMessage ?>
+    </div>
+    <?php } ?>
+
+    <?php if(isset($context->successMessage)) { ?>
+    <div style="color: green">
+        <?= $context->successMessage ?>
+    </div>
+<?php } ?>
+
+<form action="<?= Helper::getCurrentUrl(); ?>" method="post">
+    <div class="">
+        <div class="">
+            <label>Jméno :</label>
+            <input type="text" class="form-control" placeholder="Jméno" name="name" value="<?= $context->form->name ?>">
+        </div>
+        <div class="">
+            <label>Telefon :</label>
+            <input type="text" class="form-control" placeholder="+420" name="phone" value="<?= $context->form->phone ?>">
+        </div>
+    </div>
+    <div class="">
+        <label>Zpráva :</label>
+        <textarea class="form-control" rows="3" name="note"><?= $context->form->note ?></textarea>
+    </div>
+    <input type="submit" class="" value="Odeslat" />
+</form>

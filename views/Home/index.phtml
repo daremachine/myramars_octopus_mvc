@@ -1,0 +1,14 @@
+<div>
+    <h1><?= $context->pageTitle; ?></h1>
+</div>
+
+<div>
+    <p>Welcome to homepage</p>
+    <p>Cars</p>
+
+    <?php foreach($context->data as $car) { ?>
+    <div>
+        <td>### <?= $car->name; ?></td>
+    </div>
+    <?php } ?>
+</div>

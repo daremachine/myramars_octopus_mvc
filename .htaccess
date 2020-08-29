@@ -1,0 +1,29 @@
+# Apache configuration file (see https://httpd.apache.org/docs/current/mod/quickreference.html)
+Allow from all
+
+# disable directory listing
+<IfModule mod_autoindex.c>
+	Options -Indexes
+</IfModule>
+
+# enable cool URL
+<IfModule mod_rewrite.c>
+        RewriteEngine On
+
+		# prevents files starting with dot to be viewed by browser
+		RewriteRule /\.|^\.(?!well-known/) - [F]
+
+        RewriteRule ^$ wwwroot/ [L]
+        RewriteCond %{REQUEST_FILENAME} !-f
+        RewriteCond %{REQUEST_FILENAME} !-d
+        RewriteCond %{REQUEST_URI} !^wwwroot/
+		RewriteRule ^(.*)$ wwwroot/$1
+		RewriteRule !\.(pdf|js|ico|gif|jpg|png|css|rar|zip|tar\.gz|map|woff|woff2|tff)$ wwwroot/index.php [L]
+</IfModule>
+
+# enable gzip compression
+<IfModule mod_deflate.c>
+	<IfModule mod_filter.c>
+		AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css application/javascript application/json application/xml image/svg+xml
+	</IfModule>
+</IfModule>
