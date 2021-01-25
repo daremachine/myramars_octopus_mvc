@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+	<title><?= $context->pageTitle ?></title>
+</head>
+
+<body>
+    <div style="background-color: aquamarine;">
+        <?php include_once('_header.phtml'); ?>
+    </div>
+
+    <?php $context->renderContent(); ?>
+
+    <?php include_once('_footer.phtml'); ?>
+</html>

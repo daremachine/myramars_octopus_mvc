@@ -27,7 +27,7 @@ class HelperLink
         foreach(self::$ROUTE_LIST->getRoutes() as $route)
         {
             if($route->controller == ucfirst($controller) && $route->action == ucfirst($action))
-                return $route->path . ($parameters != null ? '?' . $parameters : null);
+                return substr(AppConfig::$DOCUMENT_ROOT, 0, -1) . $route->path . ($parameters != null ? '?' . $parameters : null);
         }
 
         return "not_found_in_routes";

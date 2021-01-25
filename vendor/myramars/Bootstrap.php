@@ -30,7 +30,7 @@ class Bootstrap
     public function __construct()
     {
         // load controllers
-        foreach (glob("{$_SERVER["DOCUMENT_ROOT"]}" . WebSettings::$DOCUMENT_ROOT . "controllers/*.php") as $filename)
+        foreach (glob("{$_SERVER["DOCUMENT_ROOT"]}" . AppConfig::$DOCUMENT_ROOT . "controllers/*.php") as $filename)
         { 
             include $filename;
         }
@@ -67,12 +67,13 @@ class Bootstrap
         $data = $controller->$actionName();
 
         if($data instanceof View) {
-            $context = new Context($_SERVER["DOCUMENT_ROOT"] . WebSettings::$DOCUMENT_ROOT . Settings::$DEFAULT_TEMPLATE_PATH . '/' .$data->templatePath, $data->data, $controller->pageTitle);
+            $context = new Context($_SERVER["DOCUMENT_ROOT"] . AppConfig::$DOCUMENT_ROOT . Settings::$DEFAULT_TEMPLATE_PATH . '/' .$data->templatePath, $data->data, $controller->pageTitle);
             $context->setLayoutPath(Settings::$DEFAULT_LAYOUT_PATH);
+            $context->setLayout($controller->layout ?? Settings::$DEFAULT_LAYOUT_FILE);
         }
         else {
             $templatePath = "{$_SERVER["DOCUMENT_ROOT"]}"
-            . WebSettings::$DOCUMENT_ROOT 
+            . AppConfig::$DOCUMENT_ROOT 
             . Settings::$DEFAULT_TEMPLATE_PATH 
             . "/"
             . strtolower($route->controller)
@@ -81,6 +82,7 @@ class Bootstrap
             . ".phtml";
             $context = new Context($templatePath, $data, $controller->pageTitle);
             $context->setLayoutPath(Settings::$DEFAULT_LAYOUT_PATH);
+            $context->setLayout($controller->layout ?? Settings::$DEFAULT_LAYOUT_FILE);
         }
 
         // render layout with template

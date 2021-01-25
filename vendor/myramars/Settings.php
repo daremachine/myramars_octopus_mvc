@@ -11,6 +11,11 @@
 class Settings
 {
     /**
+     * @param string DEFAULT_LAYOUT_FILE
+     */
+    public static $DEFAULT_LAYOUT_FILE = '@layout';
+
+    /**
      * @param string DEFAULT_LAYOUT_PATH
      */
     public static $DEFAULT_LAYOUT_PATH = 'views';
@@ -18,5 +23,5 @@ class Settings
     /**
      * @param string DEFAULT_TEMPLATE_PATH
      */
-    public static $DEFAULT_TEMPLATE_PATH = 'views';    
+    public static $DEFAULT_TEMPLATE_PATH = 'views';
 }
