@@ -15,6 +15,13 @@ class BaseController
     public $pageTitle = null;
 
     /**
+     * Layout file name
+     * 
+     * @param string layoutName
+     */
+    public $layout = null;
+
+    /**
      * Http request
      * 
      * @param Request request
@@ -52,5 +59,15 @@ class BaseController
     {
         header("Location: {$url}");
         die();
+    }
+
+    /**
+     * Set layout file
+     * 
+     * @param string layoutName
+     */
+    public function setLayout($layoutName)
+    {
+        $this->layout = $layoutName;
     }
 }

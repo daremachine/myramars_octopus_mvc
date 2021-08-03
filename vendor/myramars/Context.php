@@ -28,6 +28,11 @@ class Context
     public $layoutPath = null;
 
     /**
+     * @param string layoutFile
+     */
+    public $layoutFile = null;
+
+    /**
      * @param mixed currentUrl
      */
     public $currentUrl = null;
@@ -66,6 +71,16 @@ class Context
     public function setLayoutPath($layoutPath)
     {
         $this->layoutPath = $layoutPath;
+    }
+
+    /**
+     * Set layout file
+     *
+     * @param string layoutPath
+     */
+    public function setLayout($layoutFile)
+    {
+        $this->layoutFile = $layoutFile;
     }
 
     /**

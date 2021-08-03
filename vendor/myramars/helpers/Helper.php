@@ -11,7 +11,7 @@
 class Helper
 {
     /**
-     * @param string currentUrl
+     * @return string currentUrl
      */
     static function getCurrentUrl()
     {

@@ -29,7 +29,7 @@ class Renderer
      */
     private function _renderTemplate($context)
     {
-        $layoutPath = $_SERVER["DOCUMENT_ROOT"] . WebSettings::$DOCUMENT_ROOT . $context->layoutPath . '/@layout.phtml';
+        $layoutPath = $_SERVER["DOCUMENT_ROOT"] . AppConfig::$DOCUMENT_ROOT . $context->layoutPath . '/' . $context->layoutFile . '.phtml';
 
         if(!file_exists($layoutPath))
             throw new TemplateNotFoundException("Failed opening {$layoutPath}. Layout not found.");

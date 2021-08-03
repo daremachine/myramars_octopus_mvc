@@ -23,7 +23,8 @@ class Router
     public function __construct(RouteList $routeList)
     {
         // add default route Home/index
-        $routeList->addRoute(new Route(WebSettings::$DOCUMENT_ROOT, 'Home', 'Index'));
+        $routeList->addRoute(new Route('/', 'Home', 'Index'));
+        $routeList->addRoute(new Route('/sitemap.xml', 'Home', 'Sitemap'));
 
         $this->_routeList = $routeList;
     }
@@ -42,7 +43,8 @@ class Router
         // find route
         foreach($this->_routeList->getRoutes() as $route)
         {
-            if($route->path == $currentRoutePath) return $route;
+            if($route->path == str_replace(substr(AppConfig::$DOCUMENT_ROOT, 0, -1), "", $currentRoutePath))
+                return $route;
         }
 
         throw new RouteNotFoundException('Route {$route->path} not found in route list');

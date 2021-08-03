@@ -26,16 +26,22 @@ class Route
     public $action = null;
 
     /**
+     * @param string action
+     */
+    public $sitemapPriority = null;
+
+    /**
      * Controller
      *
      * @param string path
      * @param string controller
      * @param string action
      */
-    public function __construct(string $path, string $controller, string $action)
+    public function __construct(string $path, string $controller, string $action, string $sitemapPriority = '1.0')
     {
         $this->path = $path;
         $this->controller = $controller;
         $this->action = $action;
+        $this->sitemapPriority = $sitemapPriority;
     }
 }
