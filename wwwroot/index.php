@@ -11,8 +11,7 @@ RobotLoader::load();
 
 // routes
 $routes = new RouteList();
-$routes->addRoute(new Route('/octopus_mvc', 'Home', 'Index'));
-$routes->addRoute(new Route('/octopus_mvc/kontakty', 'Home', 'Contact'));
+$routes->addRoute(new Route('/kontakty', 'Home', 'Contact'));
 
 // app run
 (new Bootstrap())->setRoutes($routes)->run();

@@ -1,12 +1,12 @@
 <?php declare(strict_types=1);
 
-class WebSettings
+class AppConfig
 {
     /**
      * @param string DOCUMENT_ROOT
      */
-    public static $DOCUMENT_ROOT = '/octopus_mvc/';
-
+    public static $DOCUMENT_ROOT = '/projects/kyklop_web/';
+    
     /**
      * Web Application
      */

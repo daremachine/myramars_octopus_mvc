@@ -7,17 +7,25 @@
 
 class RobotLoader
 {
+<<<<<<< HEAD
     public static $PATHS = ['vendor', 'models', 'viewmodels'];
 
     public static $EXCLUDED_FILES = ['.', '..', 'RobotLoader.php', 'AlphaAuthorizationLoginPage.php'];
+=======
+    public static $PATHS = ['vendor', 'models', 'viewModels'];
+>>>>>>> ab2f84811d91c72a2e81c2554b6a5429f5e40bf3
     
     public static function load($folders = null, $path = null)
     {
         // load web application settings
+<<<<<<< HEAD
         if($folders == null) {
             require_once("../wwwroot/config.php");
             AppConfig::init();
         }
+=======
+        if($folders == null) require_once("../wwwroot/config.php");
+>>>>>>> ab2f84811d91c72a2e81c2554b6a5429f5e40bf3
 
         // set first iteration add absolute folder path
         $firstIterationPath = ($folders == null) ? $_SERVER['DOCUMENT_ROOT'] . AppConfig::$DOCUMENT_ROOT : "";
@@ -35,6 +43,7 @@ class RobotLoader
                 $firstIterationPath = null;
 
                 if(!file_exists($folderPath))
+<<<<<<< HEAD
                     throw new Exception("AppConfig::DOCUMENT_ROOT in config.php is probably wrong. Please set right application path from document_root. Current path: {$folderPath}");
 
                 // debug files
@@ -45,6 +54,9 @@ class RobotLoader
                     var_dump(scandir($folderPath));
                     var_dump('/<pre>');
                 }
+=======
+                    throw new Exception("AppConfig::DOCUMENT_ROOT in config.php is probably wrong. Please change right path.");
+>>>>>>> ab2f84811d91c72a2e81c2554b6a5429f5e40bf3
 
                 self::load(scandir($folderPath), $folderPath);
             }

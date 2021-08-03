@@ -5,7 +5,7 @@ class HomeController extends BaseController
     public function Index()
     {
         $this->pageTitle = "Domu";
-
+        
         /* or 
             $result = new \stdClass();
             $result->cars = (new Vehicles())->getCargos();
@@ -16,6 +16,7 @@ class HomeController extends BaseController
 
     public function Contact()
     {
+        $this->layout = "@secondLayout";
         $this->pageTitle = "Kontakty";
         $result = new \stdClass();
         $result->form = new ContactForm();

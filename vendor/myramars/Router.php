@@ -24,7 +24,10 @@ class Router
     {
         // add default route Home/index
         $routeList->addRoute(new Route('/', 'Home', 'Index'));
+<<<<<<< HEAD
         $routeList->addRoute(new Route('/sitemap.xml', 'Home', 'Sitemap'));
+=======
+>>>>>>> ab2f84811d91c72a2e81c2554b6a5429f5e40bf3
 
         $this->_routeList = $routeList;
     }
