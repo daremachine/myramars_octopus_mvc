@@ -8,6 +8,7 @@ include('../vendor/myramars/RobotLoader.php');
 
 // load vendor files
 RobotLoader::load();
+if(AppConfig::$LOADER_DEBUG) die;
 
 // routes
 $routes = new RouteList();

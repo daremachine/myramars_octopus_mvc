@@ -18,6 +18,7 @@ class ContactForm implements IForm
         if($this->name == null) return false;
         if($this->phone == null) return false;
         if($this->note == null) return false;
+        
         return true;
     }
 }
