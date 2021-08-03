@@ -76,13 +76,13 @@ class Bootstrap
 
         // create controller instance
         $controllerNameClass = ucfirst($route->controller . 'Controller');
-        $actionName = $route->action;
+        $actionName = !$route->isStandalone ? $route->action : $route->standaloneTemplateName;
         $controller = new $controllerNameClass(new Request());
 
         if(!$controller instanceof BaseController)
             throw new Exception("Controller {$controllerNameClass} found but is not instance of BaseController. It must be derivered from BaseController.");
 
-        $data = $controller->$actionName();
+        $data = !$route->isStandalone ? $controller->$actionName() : null;
 
         if($data instanceof View) {
             $context = new Context($_SERVER["DOCUMENT_ROOT"] . AppConfig::$DOCUMENT_ROOT . Settings::$DEFAULT_TEMPLATE_PATH . '/' .$data->templatePath, $data->data, $controller->pageTitle);
@@ -96,7 +96,7 @@ class Bootstrap
             . "/"
             . strtolower($route->controller)
             . "/"
-            . strtolower($route->action)
+            . strtolower($actionName)
             . ".phtml";
             $context = new Context($templatePath, $data, $controller->pageTitle);
             $context->setLayoutPath(Settings::$DEFAULT_LAYOUT_PATH);

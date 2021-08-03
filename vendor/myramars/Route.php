@@ -16,6 +16,11 @@ class Route
     public $path = null;
     
     /**
+     * @param string name
+     */
+    public $name = null;
+
+    /**
      * @param string controller
      */
     public $controller = null;
@@ -26,9 +31,19 @@ class Route
     public $action = null;
 
     /**
-     * @param string action
+     * @param string sitemapPriority
      */
     public $sitemapPriority = null;
+
+    /**
+     * @param bool isStandalone
+     */
+    public $isStandalone = false;
+
+    /**
+     * @param string standaloneTemplateName
+     */
+    public $standaloneTemplateName = null;
 
     /**
      * Controller
@@ -37,11 +52,32 @@ class Route
      * @param string controller
      * @param string action
      */
-    public function __construct(string $path, string $controller, string $action, string $sitemapPriority = '1.0')
+    public function __construct(string $path, string $controller, $action, string $sitemapPriority = '1.0')
     {
         $this->path = $path;
         $this->controller = $controller;
         $this->action = $action;
         $this->sitemapPriority = $sitemapPriority;
+    }
+
+    /**
+     * Set route to standalone template without controller action
+     */
+    public function asStandalone($templateName)
+    {
+        $this->isStandalone = true;
+        $this->standaloneTemplateName = $templateName;
+
+        return $this;
+    }
+
+    /**
+     * Set route name
+     */
+    public function setRouteName($name)
+    {
+        $this->name = $name;
+
+        return $this;
     }
 }

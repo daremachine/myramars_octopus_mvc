@@ -13,6 +13,7 @@ if(AppConfig::$LOADER_DEBUG) die;
 // routes
 $routes = new RouteList();
 $routes->addRoute(new Route('/kontakty', 'Home', 'Contact'));
+$routes->addRoute((new Route('/standalone', 'Home', null))->asStandalone('standaloneWithoutCtrl')->setRouteName('sta_route'));
 
 // app run
 (new Bootstrap())->setRoutes($routes)->run();
