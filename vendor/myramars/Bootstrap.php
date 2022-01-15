@@ -69,7 +69,6 @@ class Bootstrap
 
         // return dev authorization page
         if(AppConfig::$USE_ALPHA_CLOSED_TEST && !isset($_COOKIE["AlphaClosedTestLogin"])) {
-            include_once($_SERVER["DOCUMENT_ROOT"] . AppConfig::$DOCUMENT_ROOT . 'wwwroot/config.php');
             include_once($_SERVER["DOCUMENT_ROOT"] . AppConfig::$DOCUMENT_ROOT . 'vendor/myramars/AlphaAuthorizationLoginPage.php');
             exit;
         }
@@ -98,7 +97,7 @@ class Bootstrap
             . "/"
             . strtolower($actionName)
             . ".phtml";
-            $context = new Context($templatePath, $data, $controller->pageTitle);
+            $context = new Context($templatePath, $data, ($route->isStandalone ? $route->standalonePageTitle : $controller->pageTitle));
             $context->setLayoutPath(Settings::$DEFAULT_LAYOUT_PATH);
             $context->setLayout($controller->layout ?? Settings::$DEFAULT_LAYOUT_FILE);
         }

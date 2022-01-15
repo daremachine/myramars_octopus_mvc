@@ -46,6 +46,11 @@ class Route
     public $standaloneTemplateName = null;
 
     /**
+     * @param string standalonePageTitle
+     */
+    public $standalonePageTitle = null;
+
+    /**
      * Controller
      *
      * @param string path

@@ -14,6 +14,7 @@ if(AppConfig::$LOADER_DEBUG) die;
 $routes = new RouteList();
 $routes->addRoute(new Route('/kontakty', 'Home', 'Contact'));
 $routes->addRoute((new Route('/standalone', 'Home', null))->asStandalone('standaloneWithoutCtrl')->setRouteName('sta_route'));
+$routes->addRoute(new RouteStandAlone('/standalone-2', 'Home', 'standAloneWithoutCtrl', 'I\'am a stand alone page', 'sta_route'));
 
 // app run
 (new Bootstrap())->setRoutes($routes)->run();
