@@ -13,8 +13,16 @@ class Helper
     /**
      * @return string currentUrl
      */
-    static function getCurrentUrl()
+    static function getCurrentUrl(): string
     {
         return htmlspecialchars($_SERVER["REQUEST_URI"]);
+    }
+
+    /**
+     * @return bool is active url
+     */
+    static function isActiveUrl(Context $context, string $search, $successCss, string $failedCss = null): string
+    {
+        return strpos($context->routePath, $search) !== false ? $successCss : $failedCss;
     }
 }

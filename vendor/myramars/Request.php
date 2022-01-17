@@ -41,7 +41,7 @@ class Request
      *
      * @param string parameterName
      */
-    public function getParameter(string $parameterName)
+    public function getParameter(string $parameterName): ?string
     {
         return $_GET[$parameterName] ?? null;
     }
@@ -51,7 +51,7 @@ class Request
      *
      * @param string parameterName
      */
-    public function postParameter(string $parameterName)
+    public function postParameter(string $parameterName): ?string
     {
         return $_POST[$parameterName] ?? null;
     }

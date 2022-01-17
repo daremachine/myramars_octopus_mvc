@@ -27,7 +27,7 @@ class Renderer
      *
      * @param mixed data
      */
-    private function _renderTemplate($context)
+    private function _renderTemplate($context): void
     {
         $layoutPath = $_SERVER["DOCUMENT_ROOT"] . AppConfig::$DOCUMENT_ROOT . $context->layoutPath . '/' . $context->layoutFile . '.phtml';
 
@@ -41,7 +41,7 @@ class Renderer
         echo $var;
     }
     
-    public function render()
+    public function render(): void
     {
         $this->_renderTemplate($this->context);
     }

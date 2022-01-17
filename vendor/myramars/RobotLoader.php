@@ -11,7 +11,7 @@ class RobotLoader
 
     public static $EXCLUDED_FILES = ['.', '..', 'RobotLoader.php', 'AlphaAuthorizationLoginPage.php'];
     
-    public static function load($folders = null, $path = null)
+    public static function load($folders = null, $path = null): void
     {
         // load web application settings
         if($folders == null) {

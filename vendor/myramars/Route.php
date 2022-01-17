@@ -68,7 +68,7 @@ class Route
     /**
      * Set route to standalone template without controller action
      */
-    public function asStandalone($templateName)
+    public function asStandalone($templateName): Route
     {
         $this->isStandalone = true;
         $this->standaloneTemplateName = $templateName;
@@ -79,7 +79,7 @@ class Route
     /**
      * Set route name
      */
-    public function setRouteName($name)
+    public function setRouteName($name): Route
     {
         $this->name = $name;
 

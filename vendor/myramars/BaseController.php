@@ -43,7 +43,7 @@ class BaseController
      * @param string controller
      * @param string parameters
      */
-    public function redirect($action, $controller, $parameters = null)
+    public function redirect($action, $controller, $parameters = null): void
     {
         $url = HelperLink::link($action, $controller, $parameters);
         header("Location: {$url}");
@@ -55,7 +55,7 @@ class BaseController
      * 
      * @param string url
      */
-    public function redirectTo($url)
+    public function redirectTo($url): void
     {
         header("Location: {$url}");
         die();
@@ -66,7 +66,7 @@ class BaseController
      * 
      * @param string layoutName
      */
-    public function setLayout($layoutName)
+    public function setLayout($layoutName): void
     {
         $this->layout = $layoutName;
     }

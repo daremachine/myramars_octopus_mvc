@@ -36,6 +36,11 @@ class Context
      * @param mixed currentUrl
      */
     public $currentUrl = null;
+
+    /**
+     * @param mixed routePath
+     */
+    public $routePath = null;
     
     /**
      * Constructor
@@ -49,6 +54,7 @@ class Context
         $this->templatePath = $templatePath;
         $this->pageTitle = $pageTitle;
         $this->currentUrl = htmlspecialchars($_SERVER["REQUEST_URI"]);
+        $this->routePath = str_replace(AppConfig::$DOMAIN, '', htmlspecialchars($_SERVER["REQUEST_URI"]));
 
         // data is object then set new properties to Context for easy accessibility 
         // eg. $data->form ==> $context->form instead of $context->data->form
@@ -68,7 +74,7 @@ class Context
      *
      * @param string layoutPath
      */
-    public function setLayoutPath($layoutPath)
+    public function setLayoutPath($layoutPath): void
     {
         $this->layoutPath = $layoutPath;
     }

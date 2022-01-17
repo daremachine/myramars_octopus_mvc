@@ -20,7 +20,7 @@ class RouteList
      *
      * @param Route Route
      */
-    public function addRoute(Route $route)
+    public function addRoute(Route $route): void
     {
         $this->_routes[] = $route;
     }
