@@ -15,7 +15,7 @@ class Renderer
     /**
      * Contructor 
      *
-     * @param mixed data
+     * @param Context $context
      */
     public function __construct(Context $context)
     {
@@ -25,7 +25,7 @@ class Renderer
     /**
      * Render template
      *
-     * @param mixed data
+     * @param mixed $context
      */
     private function _renderTemplate($context): void
     {
