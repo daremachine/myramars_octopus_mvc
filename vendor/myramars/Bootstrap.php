@@ -84,7 +84,7 @@ class Bootstrap
         $data = !$route->isStandalone ? $controller->$actionName() : null;
 
         if($data instanceof View) {
-            $context = new Context($_SERVER["DOCUMENT_ROOT"] . AppConfig::$DOCUMENT_ROOT . Settings::$DEFAULT_TEMPLATE_PATH . '/' .$data->templatePath, $data->data, $controller->pageTitle);
+            $context = new Context($_SERVER["DOCUMENT_ROOT"] . AppConfig::$DOCUMENT_ROOT . Settings::$DEFAULT_TEMPLATE_PATH . '/' .$data->templatePath, $data->data, $controller->metadata);
             $context->setLayoutPath(Settings::$DEFAULT_LAYOUT_PATH);
             $context->setLayout($controller->layout ?? Settings::$DEFAULT_LAYOUT_FILE);
         }
@@ -97,7 +97,11 @@ class Bootstrap
             . "/"
             . strtolower($actionName)
             . ".phtml";
-            $context = new Context($templatePath, $data, ($route->isStandalone ? $route->standalonePageTitle : $controller->pageTitle));
+            
+            if(!$route->isStandalone && !isset($controller->metadata))
+                throw new Exception("Property metadata is not set in controller {$controllerNameClass}Controller; action {$actionName}");
+                
+            $context = new Context($templatePath, $data, ($route->isStandalone ? $route->standalonePageMetadata : $controller->metadata));
             $context->setLayoutPath(Settings::$DEFAULT_LAYOUT_PATH);
             $context->setLayout($controller->layout ?? Settings::$DEFAULT_LAYOUT_FILE);
         }

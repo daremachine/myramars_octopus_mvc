@@ -4,7 +4,7 @@ class HomeController extends BaseController
 {
     public function Index()
     {
-        $this->pageTitle = "Domu";
+        $this->metadata = new ContextMetadata("Domu", "SEO description of home.", "SEO keywords");
         
         /* or 
             $result = new \stdClass();
@@ -17,7 +17,8 @@ class HomeController extends BaseController
     public function Contact()
     {
         $this->layout = "@secondLayout";
-        $this->pageTitle = "Kontakty";
+        $this->metadata = new ContextMetadata("Kontakty", "SEO description of contacts.", "SEO keywords");
+
         $result = new \stdClass();
         $result->form = new ContactForm();
 

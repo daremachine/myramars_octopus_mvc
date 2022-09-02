@@ -12,28 +12,27 @@ class RouteStandAlone extends Route
 {
     /**
      * Controller
-     *
-     * @param string path
-     * @param string controller
-     * @param string viewFolder folder in views
-     * @param string standaloneTemplateName view name in views
-     * @param string pageTitle set page title
-     * @param string name route name used for routing as name
+     * 
+     * @param string url path
+     * @param string viewFolder Folder in views faked as controller name
+     * @param string standaloneTemplateName View name in views
+     * @param ContextMetadata metadata Set page title and SEO
+     * @param string name Route name used for routing as name
      * @param string sitemapPriority
      */
-    public function __construct(string $path,
+    public function __construct(string $urlPath,
         string $viewFolder,
         string $standaloneTemplateName,
-        string $pageTitle = null,
+        ContextMetadata $metadata = null,
         string $name = null,
         string $sitemapPriority = '1.0')
     {
-        $this->path = $path;
+        $this->path = $urlPath;
         $this->controller = $viewFolder;
         $this->sitemapPriority = $sitemapPriority;
         $this->isStandalone = true;
         $this->standaloneTemplateName = $standaloneTemplateName;
-        $this->standalonePageTitle = $pageTitle;
+        $this->standalonePageMetadata = $metadata;
 
         if(!empty($name))
             $this->name = $name;

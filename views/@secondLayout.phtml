@@ -1,13 +1,12 @@
 <!DOCTYPE html>
 <html lang="en-US">
 
-<head>
-	<title><?= $context->pageTitle ?></title>
-</head>
+<?php include_once('_htmlSnippets.php'); ?>
+<?php include_once('_pageHead.phtml'); ?>
 
 <body>
     <div style="background-color: aquamarine;">
-        asd<?php include_once('_header.phtml'); ?>
+        <?php include_once('_header.phtml'); ?>
     </div>
 
     <?php $context->renderContent(); ?>

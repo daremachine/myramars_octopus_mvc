@@ -14,6 +14,10 @@ class AppConfig
      */
     public static $DOMAIN = '';
 
+    /**
+     * @param bool enable HTTPS in links
+     */
+    public static $USE_HTTPS = false;
 
 
     /** DEBUG TOOLS  ****************************/
@@ -23,6 +27,10 @@ class AppConfig
      */
     public static $LOADER_DEBUG = false;
 
+    /**
+     * @param bool Is custom develop domain / on production is always false
+     */
+    public static $IS_DEV_DOMAIN = false;
 
 
     /** ALPHA-CLOSED  ****************************/
@@ -69,5 +77,8 @@ class AppConfig
      */
     public static function init() {
         self::$USE_ALPHA_CLOSED_TEST = getenv("USEALPHACLOSED") == 'true';
+
+        if(substr_count(strtolower($_SERVER['HTTP_HOST']), 'localhost') < 1)
+            self::$DOMAIN = (self::$USE_HTTPS ? 'https' : 'http') . '://' . $_SERVER['HTTP_HOST'];
     }
 }

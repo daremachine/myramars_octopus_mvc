@@ -1,6 +1,9 @@
 # Apache configuration file (see https://httpd.apache.org/docs/current/mod/quickreference.html)
 Allow from all
 
+php_flag display_startup_errors on
+php_flag display_errors on
+
 # disable directory listing
 <IfModule mod_autoindex.c>
 	Options -Indexes
@@ -18,7 +21,7 @@ Allow from all
         RewriteCond %{REQUEST_FILENAME} !-d
         RewriteCond %{REQUEST_URI} !^wwwroot/
 		RewriteRule ^(.*)$ wwwroot/$1
-		RewriteRule !\.(pdf|js|ico|gif|jpg|png|css|rar|zip|tar\.gz|map|woff|woff2|tff)$ wwwroot/index.php [L]
+		RewriteRule !\.(pdf|js|ico|gif|jpg|png|css|rar|zip|svg|tar\.gz|map|woff|woff2|tff|txt|xml)$ wwwroot/index.php [L]
 </IfModule>
 
 # enable gzip compression

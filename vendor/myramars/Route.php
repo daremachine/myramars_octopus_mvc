@@ -46,9 +46,9 @@ class Route
     public $standaloneTemplateName = null;
 
     /**
-     * @param string standalonePageTitle
+     * @param ContextMetadata standalonePageMetadata
      */
-    public $standalonePageTitle = null;
+    public $standalonePageMetadata = null;
 
     /**
      * Controller

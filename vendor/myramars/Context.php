@@ -13,9 +13,9 @@ class Context
     public $data = null;
     
     /**
-     * @param string title
+     * @param ContextMetadata metadata
      */
-    public $pageTitle = null;
+    public $metadata = null;
 
     /**
      * @param string templatePath
@@ -47,12 +47,12 @@ class Context
      *
      * @param string templatePath
      * @param mixed data
-     * @param string pageTitle
+     * @param ContextMetadata metadata
      */
-    public function __construct($templatePath, $data, $pageTitle)
+    public function __construct($templatePath, $data, $metadata)
     {
         $this->templatePath = $templatePath;
-        $this->pageTitle = $pageTitle;
+        $this->metadata = $metadata;
         $this->currentUrl = htmlspecialchars($_SERVER["REQUEST_URI"]);
         $this->routePath = str_replace(AppConfig::$DOMAIN, '', htmlspecialchars($_SERVER["REQUEST_URI"]));
 
